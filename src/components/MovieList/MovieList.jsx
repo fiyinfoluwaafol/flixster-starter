@@ -8,32 +8,53 @@ function MovieList() {
   const [pageNum, setPageNum] = useState(1);
 
   // Fetching data from the API
-  async function fetchData(currentPage) {
-    try{
-      const apiKey = import.meta.env.VITE_API_KEY;
-      const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
+  async function fetchData(currentPage,query="") {
+
+    // if (props.srchOrNowPlay === "nowPlaying") {  //Regular get now playing
+      try{
+        const apiKey = import.meta.env.VITE_API_KEY;
+        const options = {
+          method: 'GET',
+          headers: {
+            accept: 'application/json',
+          }
+        };
+        const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currentPage}&api_key=${apiKey}`, options);
+        if (!response.ok) {
+          throw new Error('Failed to fetch data from API');
         }
-      };
-      const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currentPage}&api_key=${apiKey}`, options);
-      if (!response.ok) {
-        throw new Error('Failed to fetch data from API');
+        const data = await response.json();
+        setMovies(movies => pageNum === 1 ? data.results : [...movies, ...data.results]);
       }
-      const data = await response.json();
-      console.log(data);
-      setMovies(movies => pageNum === 1 ? data.results : [...movies, ...data.results]);
-      // setMovies(prevMovies => page === 1 ? data.results : [...prevMovies, ...data.results]);
-    }
-    catch (error) {
-      console.error(error);
-    }
-  };
+      catch (error) {
+        console.error(error);
+      }
+    };
+      // else if (props.srchOrNowPlay === "search") { // For searching
+      //   try{
+      //     const apiKey = import.meta.env.VITE_API_KEY;
+      //     const options = {
+      //       method: 'GET',
+      //       headers: {
+      //         accept: 'application/json',
+      //       }
+      //     };
+      //     const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1&api_key=${apiKey}`, options);
+      //     if (!response.ok) {
+      //       throw new Error('Failed to fetch data from API');
+      //     }
+      //     const data = await response.json();
+      //     setMovies(movies => pageNum === 1 ? data.results : [...movies, ...data.results]);
+      //   }
+      //   catch (error) {
+      //     console.error(error);
+      //   }
+      // }
+  // };
 
   function onLoadMore () {
     setPageNum(pageNum => pageNum + 1);
-    console.log("pageNum:", pageNum);
+    // console.log("pageNum:", pageNum);
   }
 
   useEffect(() => {

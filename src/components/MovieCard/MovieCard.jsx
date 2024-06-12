@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 
 function MovieCard(props) {
     return (
-        // <div className="movie-card">
-        //     <img src={props.image} alt="movie-poster" />
-        //     <h2>{props.movieTitle}</h2>
-        //     <p>Rating: {props.rating}</p>
-        // </div>
         <div className="movie-card">
             <img src={`https://image.tmdb.org/t/p/original/${props.backdrop_path}`} alt="movie-poster" className="movie-backdrop"/>
             <h2>{props.original_title}</h2>
