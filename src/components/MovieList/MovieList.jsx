@@ -23,8 +23,8 @@ function MovieList() {
       }
       const data = await response.json();
       console.log(data);
-      setMovies(movies => [...movies, ...data.results]);
-      // setMovies(data.results);
+      setMovies(movies => pageNum === 1 ? data.results : [...movies, ...data.results]);
+      // setMovies(prevMovies => page === 1 ? data.results : [...prevMovies, ...data.results]);
     }
     catch (error) {
       console.error(error);
@@ -46,7 +46,7 @@ function MovieList() {
             {movies.map(movie => (
               <MovieCard
                 key={movie.id}
-                backdrop_path={movie.backdrop_path}
+                backdrop_path={movie.poster_path}
                 original_title={movie.original_title}
                 vote_average={movie.vote_average}
               />
