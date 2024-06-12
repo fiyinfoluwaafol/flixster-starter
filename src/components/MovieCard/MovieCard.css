@@ -1,11 +1,11 @@
 .movie-card {
     border: 1px solid black;
     border-radius: 13px;
-    width: 20vw;
+    width: 250px;
 }
 
 .movie-backdrop {
-    width: 20vw;
+    width: 250px;
     /* height: 300px; */
     border-radius: 13px 13px 0px 0px;
     object-fit: cover;
