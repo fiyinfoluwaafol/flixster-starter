@@ -7,8 +7,7 @@ import React, { useState, useEffect } from 'react';
 
 
 function MovieList() {
-  let data = null;
-  let movie = null;
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     // Fetching data from the API
@@ -25,31 +24,27 @@ function MovieList() {
         if (!response.ok) {
           throw new Error('Failed to fetch data from API');
         }
-        data = await response.json();
-        console.log(data);
+        const data = await response.json();
+        setMovies(data.results);
       }
       catch (error) {
         console.error(error);
       }
     };
 
-    movie = fetchData();
-    console.log(movie);
+    fetchData();
   }, []);
 
     return (
-
       <div className="movie-list">
-          {/* <MovieCard original_title={data.results[0].original_title} vote_average={data.results[0].vote_average} /> */}
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
+          {movies.map(movie => (
+            <MovieCard
+              key={movie.id}
+              backdrop_path={movie.backdrop_path}
+              original_title={movie.original_title}
+              vote_average={movie.vote_average}
+            />
+          ))}
       </div>
     )
 }

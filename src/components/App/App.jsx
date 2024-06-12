@@ -12,10 +12,12 @@ const App = () => {
       <h1>Flixster</h1>
       <SortMenu />
     </header>
-    <MovieList />
-    <div id="load-bttn">
-      <button>Load More</button>
-    </div>
+    <main>
+      <MovieList />
+      <div id="load-bttn">
+        <button>Load More</button>
+      </div>
+    </main>
     <footer>
       <p id="footer">&#169; 2024 Flixster</p>
     </footer>
