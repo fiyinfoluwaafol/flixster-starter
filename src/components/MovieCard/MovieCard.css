@@ -1,0 +1,9 @@
+.movie-card {
+    border: 1px solid black;
+    border-radius: 13px;
+}
+
+.movie-backdrop {
+    width: 400px;
+    height: 400px;
+}
