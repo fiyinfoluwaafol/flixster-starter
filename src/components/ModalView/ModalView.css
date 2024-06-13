@@ -12,7 +12,7 @@ cursor: pointer;
 }
 
 .modal-view {
-/* display: none; */
+display: none;
 position: fixed;
 z-index: 100;
 left: 0;
@@ -24,7 +24,20 @@ backdrop-filter: blur(5px);
 /* overflow: auto; */
 }
 
+.modal-view.hide{
+    display: none;
+}
+
+.modal-view.show{
+    display: block;
+}
+
 .modal-content {
 backdrop-filter: blur(5px); /* Applies blur background */
 background-color: white;
+margin: auto;
+margin-top: 10%;
+padding: 20px;
+border: 1px solid #888;
+width: 80%;
 }
