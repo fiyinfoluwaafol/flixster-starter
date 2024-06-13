@@ -29,7 +29,7 @@ backdrop-filter: blur(5px);
 }
 
 .modal-view.show{
-    display: block;
+    display: flex;
 }
 
 .modal-content {
@@ -40,4 +40,10 @@ margin-top: 10%;
 padding: 20px;
 border: 1px solid #888;
 width: 80%;
+}
+
+.modal-content img {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
 }
