@@ -6,15 +6,22 @@ import SortMenu from '../SortMenu/SortMenu'
 
 
 const App = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchPageNum, setMoviesPageNum] = useState(1);
+  // const [sortBy, setSortBy] = useState('');
+  // setMoviesPageNum(1);
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  }
   return (
   <div className="App">
     <header className="App-header">
-      <SearchForm />
+      <SearchForm onSearch={handleSearch}/>
       <h1>Flixster</h1>
       <SortMenu />
     </header>
     <main>
-      <MovieList srchOrNowPlay="nowPlaying"/>
+      <MovieList searchQuery={searchQuery} />
     </main>
     <footer>
       <p id="footer">&#169; 2024 Flixster</p>
