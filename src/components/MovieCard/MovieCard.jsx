@@ -2,26 +2,31 @@ import "./MovieCard.css";
 import PropTypes from 'prop-types';
 
 function MovieCard(props) {
+    const handleClick = () => {
+        props.onMovieClick();
+    }
+    // const movieId = props.id;
     let img_src = null;
-    if (props.poster_path === null) {
+    if (props.posterPath === null) {
         img_src =`https://placehold.co/250x400`
     }
     else {
-        img_src = `https://image.tmdb.org/t/p/original/${props.poster_path}`
+        img_src = `https://image.tmdb.org/t/p/original/${props.posterPath}`
     }
     return (
-        <div className="movie-card">
+        <div className="movie-card" onClick={handleClick}>
+        {/* <div className="movie-card" onClick={handleClick}> */}
             <img src={img_src} alt="movie-poster" className="movie-backdrop"/>
-            <h2>{props.original_title}</h2>
-            <p>Rating: {props.vote_average}</p>
+            <h2>{props.originalTitle}</h2>
+            <p>Rating: {props.voteAverage}</p>
         </div>
     )
 }
 
 MovieCard.propTypes = {
-    backdrop_path: PropTypes.string.isRequired,
-    original_title: PropTypes.string.isRequired,
-    vote_average: PropTypes.number.isRequired,
+    posterPath: PropTypes.string,
+    originalTitle: PropTypes.string.isRequired,
+    voteAverage: PropTypes.number.isRequired,
 };
 
 export default MovieCard;

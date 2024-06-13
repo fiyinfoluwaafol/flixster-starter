@@ -8,12 +8,22 @@ import ModalView from '../ModalView/ModalView'
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [isCardOpen, setIsCardOpen] = useState(false);
   // const [searchPageNum, setMoviesPageNum] = useState(1);
   // const [sortBy, setSortBy] = useState('');
   // setMoviesPageNum(1);
   const handleSearch = (query) => {
     setSearchQuery(query);
   }
+
+  // const handleMovieClick = (movie) => {
+  //   setSelectedMovie(movie);
+  // }
+  // const handleCloseModal = () => {
+  //   setSelectedMovie(null);
+  // }
+
   return (
   <div className="App">
     <header className="App-header">
@@ -22,9 +32,16 @@ const App = () => {
       <SortMenu />
     </header>
     <main>
-      <MovieList searchQuery={searchQuery} />
+      <MovieList
+        searchQuery={searchQuery}
+        // onMovieClick={handleMovieClick}
+      />
     </main>
-    <ModalView />
+    <ModalView
+      // movie={selectedMovie}
+      // onClose={handleCloseModal}
+      isCardOpen={isCardOpen}
+    />
     <footer>
       <p id="footer">&#169; 2024 Flixster</p>
     </footer>
@@ -32,4 +49,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
