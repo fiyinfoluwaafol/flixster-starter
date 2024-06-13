@@ -3,6 +3,7 @@ import './App.css'
 import SearchForm from '../SearchForm/SearchForm'
 import MovieList from '../MovieList/MovieList'
 import SortMenu from '../SortMenu/SortMenu'
+import ModalView from '../ModalView/ModalView'
 
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
     <main>
       <MovieList searchQuery={searchQuery} />
     </main>
+    <ModalView />
     <footer>
       <p id="footer">&#169; 2024 Flixster</p>
     </footer>
