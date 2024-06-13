@@ -3,10 +3,10 @@ import MovieCard from "../MovieCard/MovieCard";
 import React, { useState, useEffect } from 'react';
 
 
-function MovieList({searchQuery}) {
+function MovieList({searchQuery, onMovieClick}) {
   const [movies, setMovies] = useState([]);
   const [pageNum, setPageNum] = useState(1);
-  const [selectedMovie, setSelectedMovie] = useState({});
+  // const [selectedMovie, setSelectedMovie] = useState({});
 
 
 
@@ -17,7 +17,7 @@ function MovieList({searchQuery}) {
   }
 
   // Handles passing in selected movie information for modal detail view
-  async function onMovieClick (movie_id) {
+  async function fetchMovieDetails (movie_id) {
     // async function fetchMovieDetails (){
       try{
       const apiKey = import.meta.env.VITE_API_KEY;
@@ -33,8 +33,9 @@ function MovieList({searchQuery}) {
         throw new Error('Failed to fetch data from API');
       }
       const data = await response.json();
+      onMovieClick(data);
       console.log(data);
-      setSelectedMovie(data);
+      // setSelectedMovie(data);
       // setMovies(movies => pageNum === 1 ? data.results : [...movies, ...data.results]);
     }
     catch (error) {
@@ -93,7 +94,7 @@ function MovieList({searchQuery}) {
             posterPath={movie.poster_path}
             originalTitle={movie.original_title}
             voteAverage={movie.vote_average}
-            onMovieClick={() => onMovieClick(movie.id)}
+            onMovieClick={() => fetchMovieDetails(movie.id)}
             />
             ))}
       </div>

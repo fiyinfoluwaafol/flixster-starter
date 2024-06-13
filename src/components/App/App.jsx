@@ -9,7 +9,7 @@ import ModalView from '../ModalView/ModalView'
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [isCardOpen, setIsCardOpen] = useState(false);
+  // const [isCardOpen, setIsCardOpen] = useState(false);
   // const [searchPageNum, setMoviesPageNum] = useState(1);
   // const [sortBy, setSortBy] = useState('');
   // setMoviesPageNum(1);
@@ -17,13 +17,13 @@ const App = () => {
     setSearchQuery(query);
   }
 
-  // const handleMovieClick = (movie) => {
-  //   setSelectedMovie(movie);
-  // }
-  // const handleCloseModal = () => {
-  //   setSelectedMovie(null);
-  // }
+  const handleMovieClick = (movie) => {
+    setSelectedMovie(movie);
+  }
 
+  const handleCloseModal = () => {
+    setSelectedMovie(null);
+  }
   return (
   <div className="App">
     <header className="App-header">
@@ -34,17 +34,17 @@ const App = () => {
     <main>
       <MovieList
         searchQuery={searchQuery}
-        // onMovieClick={handleMovieClick}
+        onMovieClick={handleMovieClick}
       />
     </main>
-    <ModalView
-      // movie={selectedMovie}
-      // onClose={handleCloseModal}
-      isCardOpen={isCardOpen}
-    />
     <footer>
       <p id="footer">&#169; 2024 Flixster</p>
     </footer>
+    <ModalView
+      movie={selectedMovie}
+      onClose={handleCloseModal}
+      // isCardOpen={isCardOpen}
+    />
   </div>
   )
 }
