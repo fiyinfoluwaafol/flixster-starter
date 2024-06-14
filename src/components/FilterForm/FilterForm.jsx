@@ -1,13 +1,13 @@
 import "./FilterForm.css";
 
 function FilterForm(props) {
-    const [filterBy, setFilterBy] = useState("");
-    const handleSelectGenre = (event) => {
-        setFilterBy(event.target.value);
-        props.onFilter(filterBy);
+    // const [filterBy, setFilterBy] = useState("");
+    const handleFilterChange = (event) => {
+        // setFilterBy(event.target.value);
+        props.onFilterChange(event.target.value);
     }
     return (
-        <select name="filter-by" onChange={handleSelectGenre}>
+        <select name="filter-by" onChange={handleFilterChange}>
             <option value="">Filter by Genre</option>
             <option value="28">Action</option>
             <option value="12">Adventure</option>

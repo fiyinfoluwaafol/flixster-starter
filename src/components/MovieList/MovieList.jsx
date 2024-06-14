@@ -3,7 +3,7 @@ import MovieCard from "../MovieCard/MovieCard";
 import React, { useState, useEffect } from 'react';
 
 
-function MovieList({searchQuery, onMovieClick, filterBy}) {
+function MovieList({searchQuery, onMovieClick, filterCriteria}) {
   const [movies, setMovies] = useState([]);
   const [pageNum, setPageNum] = useState(1);
 
@@ -53,15 +53,21 @@ function MovieList({searchQuery, onMovieClick, filterBy}) {
           }
         };
         let endpoint;
-        if (query === "") {
-          if (genreId === "") {
-            endpoint = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currentPage}&api_key=${apiKey}`;
-          }
-          else {
-            endpoint =`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${currentPage}&sort_by=popularity.desc&with_genres=${genreId}&api_key=${apiKey}`
-          }
-        } else {
+        // if (query === "") {
+        //   if (genreId === "") {
+        //     endpoint = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currentPage}&api_key=${apiKey}`;
+        //   }
+        //   else {
+        //     endpoint =`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${currentPage}&sort_by=popularity.desc&with_genres=${genreId}&api_key=${apiKey}`
+        //   }}
+        if (genreId){
+          endpoint =`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${currentPage}&sort_by=popularity.desc&with_genres=${genreId}&api_key=${apiKey}`
+        }
+        else if (query) {
           endpoint = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${currentPage}&api_key=${apiKey}`;
+        }
+        else {
+          endpoint = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currentPage}&api_key=${apiKey}`;
         }
         const response = await fetch(endpoint, options);
         if (!response.ok) {
@@ -76,14 +82,19 @@ function MovieList({searchQuery, onMovieClick, filterBy}) {
       }
     };
 
-    if (searchQuery){
+    if (filterCriteria){
       setMovies([]);
       setPageNum(1);
-      fetchData(pageNum,searchQuery,filterBy);
-    } else {
-      fetchData(pageNum,searchQuery,filterBy);
+      fetchData(pageNum,"",filterCriteria)
     }
-  }, [searchQuery, pageNum,filterBy]);
+    else if (searchQuery){
+      setMovies([]);
+      setPageNum(1);
+      fetchData(pageNum,searchQuery,filterCriteria);
+    } else {
+      fetchData(pageNum,searchQuery);
+    }
+  }, [searchQuery, pageNum,filterCriteria]);
 
   return (
     <>
