@@ -35,10 +35,10 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
   - [ ] Website is deployed via Render.
 - [x] **Embedded Movie Trailers**
   - [x] Within the popup displaying a movie's details, users can play the movie trailer.
-- [ ] **Watched Checkbox**
-  - [ ] For each movie displayed, users can mark the movie as watched.
-- [ ] **Favorite Button**
-  - [ ] For each movie displayed, users can favorite the movie.
+- [x] **Watched Checkbox**
+  - [x] For each movie displayed, users can mark the movie as watched.
+- [x] **Favorite Button**
+  - [x] For each movie displayed, users can favorite the movie.
 - [ ] **Sidebar**
   - [ ] Users can open a sidebar
   - [ ] The sidebar displays the user's favorited and watched movies

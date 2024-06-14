@@ -1,9 +1,13 @@
 import "./MovieCard.css";
 import PropTypes, { func } from 'prop-types';
 import { useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 
 function MovieCard(props) {
     const [isLiked, setIsLiked] = useState(false);
+    const [isWatched, setIsWatched] = useState(false);
     const handleClick = () => {
         props.onMovieClick();
     }
@@ -12,6 +16,12 @@ function MovieCard(props) {
         event.preventDefault();
         event.stopPropagation();
         setIsLiked(!isLiked);
+    }
+
+    function handleWatchedBttn (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setIsWatched(!isWatched);
     }
     // const movieId = props.id;
     let img_src = null;
@@ -27,7 +37,10 @@ function MovieCard(props) {
             <img src={img_src} alt="movie-poster" className="movie-backdrop"/>
             <h2>{props.originalTitle}</h2>
             <p>Rating: {props.voteAverage}</p>
-            <button onClick={handleLikeBttn}>{isLiked? '❤️' : '🤍'}</button>
+            <div className="interactive-buttons">
+                <button onClick={handleLikeBttn}>{isLiked? <FontAwesomeIcon icon={solidHeart}/> : <FontAwesomeIcon icon={regularHeart}/>}</button>
+                <button onClick={handleWatchedBttn}>{isWatched? '👁️' : '🍿'}</button>
+            </div>
         </div>
     )
 }
