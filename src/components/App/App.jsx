@@ -4,11 +4,13 @@ import SearchForm from '../SearchForm/SearchForm'
 import MovieList from '../MovieList/MovieList'
 import SortMenu from '../SortMenu/SortMenu'
 import ModalView from '../ModalView/ModalView'
+import FilterForm from '../FilterForm/FilterForm'
 
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [filterBy, setFilterBy] = useState("");
   // const [isCardOpen, setIsCardOpen] = useState(false);
   // const [searchPageNum, setMoviesPageNum] = useState(1);
   // const [sortBy, setSortBy] = useState('');
@@ -17,6 +19,9 @@ const App = () => {
     setSearchQuery(query);
   }
 
+  const handleFilter = (genre) => {
+    setFilterBy(genre);
+  }
   const handleMovieClick = (movie) => {
     setSelectedMovie(movie);
   }
@@ -26,13 +31,15 @@ const App = () => {
   }
   return (
   <div className="App">
+    <h1>Flixster</h1>
     <header className="App-header">
       <SearchForm onSearch={handleSearch}/>
-      <h1>Flixster</h1>
+      <FilterForm onFilter={handleFilter}/>
       <SortMenu />
     </header>
     <main>
       <MovieList
+        filterBy={filterBy}
         searchQuery={searchQuery}
         onMovieClick={handleMovieClick}
       />
