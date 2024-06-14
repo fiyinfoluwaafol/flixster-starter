@@ -10,7 +10,7 @@ import FilterForm from '../FilterForm/FilterForm'
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [filterBy, setFilterBy] = useState("");
+  const [filterCriteria, setFilterCriteria] = useState(null);
   // const [isCardOpen, setIsCardOpen] = useState(false);
   // const [searchPageNum, setMoviesPageNum] = useState(1);
   // const [sortBy, setSortBy] = useState('');
@@ -19,8 +19,8 @@ const App = () => {
     setSearchQuery(query);
   }
 
-  const handleFilter = (genre) => {
-    setFilterBy(genre);
+  const handleFilterChange = (genreId) => {
+    setFilterCriteria(genreId);
   }
   const handleMovieClick = (movie) => {
     setSelectedMovie(movie);
@@ -34,12 +34,12 @@ const App = () => {
     <h1>Flixster</h1>
     <header className="App-header">
       <SearchForm onSearch={handleSearch}/>
-      <FilterForm onFilter={handleFilter}/>
+      <FilterForm onFilterChange={handleFilterChange}/>
       <SortMenu />
     </header>
     <main>
       <MovieList
-        filterBy={filterBy}
+        filterCriteria={filterCriteria}
         searchQuery={searchQuery}
         onMovieClick={handleMovieClick}
       />
