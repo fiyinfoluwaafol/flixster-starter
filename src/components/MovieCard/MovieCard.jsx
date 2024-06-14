@@ -1,9 +1,17 @@
 import "./MovieCard.css";
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
+import { useState } from 'react';
 
 function MovieCard(props) {
+    const [isLiked, setIsLiked] = useState(false);
     const handleClick = () => {
         props.onMovieClick();
+    }
+
+    function handleLikeBttn (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setIsLiked(!isLiked);
     }
     // const movieId = props.id;
     let img_src = null;
@@ -19,6 +27,7 @@ function MovieCard(props) {
             <img src={img_src} alt="movie-poster" className="movie-backdrop"/>
             <h2>{props.originalTitle}</h2>
             <p>Rating: {props.voteAverage}</p>
+            <button onClick={handleLikeBttn}>{isLiked? '❤️' : '🤍'}</button>
         </div>
     )
 }

@@ -8,6 +8,7 @@ function ModalView(props) {
   if (!props.movie) {
     return null;
   }
+  const hasVideo = props.movie.video;
   return (
   <div className={`modal-view ${props.movie? 'show' : 'hide'}`}>
     {/* <div className="modal-view modal-close"> */}
@@ -21,6 +22,9 @@ function ModalView(props) {
       <h2>{props.movie.title}</h2>
       <div className="embed-responsive embed-responsive-16by9">
         <iframe className="embed-responsive-item" width="560" height="315" src={`https://www.youtube.com/embed/${props.movie.videos.results[0].key}`} allowFullScreen></iframe>
+        {/* <iframe className="embed-responsive-item" width="560" height="315" src={`https://www.youtube.com/embed/${
+          props.movie.videos.results.find((video) => video.type === "Trailer")?.key || props.movie.videos.results[0].key}`}
+          allowFullScreen></iframe> */}
       </div>
       {/* <img src={`https://image.tmdb.org/t/p/original/${props.movie.backdrop_path}`} alt={props.movie.title}/> */}
       <p>
