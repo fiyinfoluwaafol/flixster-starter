@@ -23,7 +23,9 @@ background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 backdrop-filter: blur(5px);
 /* overflow: auto; */
 }
-
+.modal-view p, .modal-view h2 {
+    color: white;
+}
 .modal-view.hide{
     display: none;
 }
