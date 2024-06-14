@@ -36,10 +36,11 @@ backdrop-filter: blur(5px);
 backdrop-filter: blur(5px); /* Applies blur background */
 background-color: white;
 margin: auto;
-margin-top: 10%;
+/* margin-top: 10%; */
 padding: 20px;
 border: 1px solid #888;
 width: 80%;
+overflow: auto;
 }
 
 .modal-content img {

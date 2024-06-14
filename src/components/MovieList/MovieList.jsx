@@ -3,12 +3,9 @@ import MovieCard from "../MovieCard/MovieCard";
 import React, { useState, useEffect } from 'react';
 
 
-function MovieList({searchQuery, onMovieClick}) {
+function MovieList({searchQuery, onMovieClick, filterBy}) {
   const [movies, setMovies] = useState([]);
   const [pageNum, setPageNum] = useState(1);
-  // const [selectedMovie, setSelectedMovie] = useState({});
-
-
 
   // Loading more data when user clicks on the button
   function onLoadMore () {
@@ -18,7 +15,6 @@ function MovieList({searchQuery, onMovieClick}) {
 
   // Handles passing in selected movie information for modal detail view
   async function fetchMovieDetails (movie_id) {
-    // async function fetchMovieDetails (){
       try{
       const apiKey = import.meta.env.VITE_API_KEY;
       const options = {
@@ -27,7 +23,7 @@ function MovieList({searchQuery, onMovieClick}) {
           accept: 'application/json',
         }
       };
-      let endpoint = `https://api.themoviedb.org/3/movie/${movie_id}?language=en-US&api_key=${apiKey}`;
+      let endpoint = `https://api.themoviedb.org/3/movie/${movie_id}?language=en-US&append_to_response=videos&api_key=${apiKey}`;
       const response = await fetch(endpoint, options);
       if (!response.ok) {
         throw new Error('Failed to fetch data from API');
@@ -46,7 +42,7 @@ function MovieList({searchQuery, onMovieClick}) {
   }
 
   useEffect(() => {
-    async function fetchData(currentPage,query="") {
+    async function fetchData(currentPage, query="", genreId="") {
       // Fetching data from the API
       try{
         const apiKey = import.meta.env.VITE_API_KEY;
@@ -58,7 +54,12 @@ function MovieList({searchQuery, onMovieClick}) {
         };
         let endpoint;
         if (query === "") {
-          endpoint = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currentPage}&api_key=${apiKey}`;
+          if (genreId === "") {
+            endpoint = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currentPage}&api_key=${apiKey}`;
+          }
+          else {
+            endpoint =`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${currentPage}&sort_by=popularity.desc&with_genres=${genreId}&api_key=${apiKey}`
+          }
         } else {
           endpoint = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${currentPage}&api_key=${apiKey}`;
         }
@@ -78,12 +79,11 @@ function MovieList({searchQuery, onMovieClick}) {
     if (searchQuery){
       setMovies([]);
       setPageNum(1);
-      // console.log("searching", pageNum);
-      fetchData(pageNum,searchQuery);
+      fetchData(pageNum,searchQuery,filterBy);
     } else {
-      fetchData(pageNum,searchQuery);
+      fetchData(pageNum,searchQuery,filterBy);
     }
-  }, [searchQuery, pageNum]);
+  }, [searchQuery, pageNum,filterBy]);
 
   return (
     <>

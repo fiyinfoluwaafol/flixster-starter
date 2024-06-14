@@ -4,7 +4,6 @@ import runtimeToHrsMins from "../../utils/utils";
 import PropTypes from "prop-types";
 
 function ModalView(props) {
-  // const [selectedMovie, setSelectedMovie] = useState(null);
 
   if (!props.movie) {
     return null;
@@ -28,16 +27,16 @@ function ModalView(props) {
         Overview: {props.movie.overview}
         </p>
       <p>
-        Genres: genres
+        Genres: {props.movie.genres.map(genre => genre.name).join(", ")}
       </p>
       <p>
         {/* Runtime: 00h 00mins */}
         Runtime: {runtimeToHrsMins(props.movie.runtime)}
       </p>
       {/* Embedded Youtube Video */}
-      {/* <div className="embed-responsive embed-responsive-16by9">
-        <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowFullScreen></iframe>
-      </div> */}
+      <div className="embed-responsive embed-responsive-16by9">
+        <iframe className="embed-responsive-item" width="560" height="315" src={`https://www.youtube.com/embed/${props.movie.videos.results[0].key}`} allowFullScreen></iframe>
+      </div>
       <button className="close" onClick={props.onClose}>&times;</button>
       {/* <button className="close" onClick={props.onClose}>&times;</button> */}
     </div>
