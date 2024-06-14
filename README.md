@@ -18,16 +18,16 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 - [x] **Search Functionality**
   - [x] Users can search for movies and view the results in a grid.
   - [x] Users can clear results and view previous current movies displayed.
-- [ ] **Accessibility Features**
-  - [ ] Website implements accessibility features (semantic HTML, color contrast, font sizing, alt text for images).
-- [ ] **Responsive Design**
-  - [ ] Website implements responsive web design.
+- [x] **Accessibility Features**
+  - [x] Website implements accessibility features (semantic HTML, color contrast, font sizing, alt text for images).
+- [x] **Responsive Design**
+  - [x] Website implements responsive web design.
 - [x] **Movie Details**
   - [x] Users can view more details about a movie in a popup, such as runtime in minutes, backdrop poster, release date, genres, and/or an overview.
 - [x] **Sorting Options**
   - [x] Users can click on a filter by drop down to sort product by type (alphabetic, release date, rating).
-- [ ] **Layout**
-  - [ ] Website displays header, banner, search, movie grid, about, contact, and footer section.
+- [x] **Layout**
+  - [x] Website displays header, banner, search, movie grid, about, contact, and footer section.
 
 #### STRETCH FEATURES
 
@@ -35,10 +35,10 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
   - [ ] Website is deployed via Render.
 - [x] **Embedded Movie Trailers**
   - [x] Within the popup displaying a movie's details, users can play the movie trailer.
-- [ ] **Watched Checkbox**
-  - [ ] For each movie displayed, users can mark the movie as watched.
-- [ ] **Favorite Button**
-  - [ ] For each movie displayed, users can favorite the movie.
+- [x] **Watched Checkbox**
+  - [x] For each movie displayed, users can mark the movie as watched.
+- [x] **Favorite Button**
+  - [x] For each movie displayed, users can favorite the movie.
 - [ ] **Sidebar**
   - [ ] Users can open a sidebar
   - [ ] The sidebar displays the user's favorited and watched movies

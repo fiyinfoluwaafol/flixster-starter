@@ -92,7 +92,7 @@ function MovieList({searchQuery, onMovieClick, filterCriteria}) {
       setPageNum(1);
       fetchData(pageNum,searchQuery,filterCriteria);
     } else {
-      fetchData(pageNum,searchQuery);
+      fetchData(pageNum,searchQuery, filterCriteria);
     }
   }, [searchQuery, pageNum,filterCriteria]);
 

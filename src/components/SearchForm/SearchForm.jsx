@@ -1,6 +1,7 @@
 import "./SearchForm.css";
 import React, { useState } from "react";
 
+
 function SearchForm(props) {
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -17,7 +18,7 @@ function SearchForm(props) {
         <div className="search-form">
             <form onSubmit={handleSearchSubmit}>
                 <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
-                <button type="submit">Search</button>
+                <button type="submit">🔎</button>
             </form>
 
             {/* TODO: Change this to a search icon */}
