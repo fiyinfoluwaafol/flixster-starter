@@ -35,7 +35,7 @@ const App = () => {
     <header className="App-header">
       <SearchForm onSearch={handleSearch}/>
       <FilterForm onFilterChange={handleFilterChange}/>
-      <SortMenu />
+      {/* <SortMenu /> */}
     </header>
     <main>
       <MovieList
