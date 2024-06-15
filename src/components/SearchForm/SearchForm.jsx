@@ -20,8 +20,6 @@ function SearchForm(props) {
                 <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search" />
                 <button type="submit">🔎</button>
             </form>
-
-            {/* TODO: Change this to a search icon */}
         </div>
     )
 }

@@ -2,9 +2,9 @@
 
 Submitted by: **Fiyinfoluwa Afolayan**
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: **35** hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Flixster Deployed Site](https://flixster-starter-ahfr.onrender.com)
 
 ### Application Features
 
@@ -31,8 +31,8 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 #### STRETCH FEATURES
 
-- [ ] **Deployment**
-  - [ ] Website is deployed via Render.
+- [x] **Deployment**
+  - [x] Website is deployed via Render.
 - [x] **Embedded Movie Trailers**
   - [x] Within the popup displaying a movie's details, users can play the movie trailer.
 - [x] **Watched Checkbox**
@@ -53,7 +53,7 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+Yes, I would say that the labs were definitely helpful in preparing me to complete the assignment. I was able to more easily wrap my hair
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
@@ -65,7 +65,7 @@ Add your response here
 
 ### Open-source libraries used
 
-- Add any links to open-source libraries used in your project.
+Again I used FontAwesome icons
 
 ### Shout out
 

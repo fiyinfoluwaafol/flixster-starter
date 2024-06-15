@@ -1,9 +1,7 @@
 import "./FilterForm.css";
 
 function FilterForm(props) {
-    // const [filterBy, setFilterBy] = useState("");
     const handleFilterChange = (event) => {
-        // setFilterBy(event.target.value);
         props.onFilterChange(event.target.value);
     }
     return (

@@ -10,7 +10,6 @@ function MovieList({searchQuery, onMovieClick, filterCriteria}) {
   // Loading more data when user clicks on the button
   function onLoadMore () {
     setPageNum(pageNum => pageNum + 1);
-    console.log("clicked", pageNum);
   }
 
   // Handles passing in selected movie information for modal detail view
@@ -30,15 +29,10 @@ function MovieList({searchQuery, onMovieClick, filterCriteria}) {
       }
       const data = await response.json();
       onMovieClick(data);
-      console.log(data);
-      // setSelectedMovie(data);
-      // setMovies(movies => pageNum === 1 ? data.results : [...movies, ...data.results]);
     }
     catch (error) {
       console.error(error);
     }
-    console.log("clicked", movie_id);
-    // setSelectedMovie({id: movie_id});
   }
 
   useEffect(() => {
@@ -53,20 +47,13 @@ function MovieList({searchQuery, onMovieClick, filterCriteria}) {
           }
         };
         let endpoint;
-        // if (query === "") {
-        //   if (genreId === "") {
-        //     endpoint = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currentPage}&api_key=${apiKey}`;
-        //   }
-        //   else {
-        //     endpoint =`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${currentPage}&sort_by=popularity.desc&with_genres=${genreId}&api_key=${apiKey}`
-        //   }}
-        if (genreId){
+        if (genreId){ // If genreId is passed in, we are fetching data for a specific genre
           endpoint =`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${currentPage}&sort_by=popularity.desc&with_genres=${genreId}&api_key=${apiKey}`
         }
-        else if (query) {
+        else if (query) { // If query is passed in, we are fetching data for a specific search query
           endpoint = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=${currentPage}&api_key=${apiKey}`;
         }
-        else {
+        else { // If no query or genreId is passed in, we are fetching data for the now playing movies
           endpoint = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${currentPage}&api_key=${apiKey}`;
         }
         const response = await fetch(endpoint, options);
@@ -74,24 +61,23 @@ function MovieList({searchQuery, onMovieClick, filterCriteria}) {
           throw new Error('Failed to fetch data from API');
         }
         const data = await response.json();
-        console.log(data);
-        setMovies(movies => pageNum === 1 ? data.results : [...movies, ...data.results]);
+        setMovies(movies => pageNum === 1 ? data.results : [...movies, ...data.results]); // Updating the movies state with the new data
       }
       catch (error) {
         console.error(error);
       }
     };
 
-    if (filterCriteria){
+    if (filterCriteria){ // If filterCriteria is passed in, we are fetching data for a specific genre
       setMovies([]);
       setPageNum(1);
       fetchData(pageNum,"",filterCriteria)
     }
-    else if (searchQuery){
+    else if (searchQuery){ // If searchQuery is passed in, we are fetching data for a specific search query
       setMovies([]);
       setPageNum(1);
       fetchData(pageNum,searchQuery,filterCriteria);
-    } else {
+    } else { // If no searchQuery or filterCriteria is passed in, we are fetching data for the now playing movies
       fetchData(pageNum,searchQuery, filterCriteria);
     }
   }, [searchQuery, pageNum,filterCriteria]);

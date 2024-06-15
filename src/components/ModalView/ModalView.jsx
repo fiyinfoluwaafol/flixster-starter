@@ -1,6 +1,5 @@
 import "./ModalView.css";
 import runtimeToHrsMins from "../../utils/utils";
-// import { useState } from "react";
 import PropTypes from "prop-types";
 
 function ModalView(props) {
@@ -13,7 +12,6 @@ function ModalView(props) {
   if (hasVideo) {
     return (
     <div className={`modal-view ${props.movie? 'show' : 'hide'}`}>
-      {/* <div className="modal-view modal-close"> */}
       <div className="modal-content" style={
         {backgroundImage: `linear-gradient(
           rgba(0, 0, 0, 0.8),
@@ -37,11 +35,9 @@ function ModalView(props) {
           Genres: {props.movie.genres.map(genre => genre.name).join(", ")}
         </p>
         <p>
-          {/* Runtime: 00h 00mins */}
           Runtime: {runtimeToHrsMins(props.movie.runtime)}
         </p>
         <button className="close" onClick={props.onClose}>&times;</button>
-        {/* <button className="close" onClick={props.onClose}>&times;</button> */}
       </div>
     </div>
     );
@@ -57,8 +53,7 @@ function ModalView(props) {
                   }>
                   <h2>{props.movie.title}</h2>
                   <div className="embed-responsive embed-responsive-16by9">
-
-                  <img src={`https://image.tmdb.org/t/p/original/${props.movie.backdrop_path}`} alt={props.movie.title}/>
+                    <img  className="embed-responsive-item" src={`https://image.tmdb.org/t/p/original/${props.movie.backdrop_path}`} alt={props.movie.title}/>
                   </div>
                   <p>
                     Release Date: {props.movie.release_date}
@@ -70,11 +65,9 @@ function ModalView(props) {
                     Genres: {props.movie.genres.map(genre => genre.name).join(", ")}
                   </p>
                   <p>
-                    {/* Runtime: 00h 00mins */}
                     Runtime: {runtimeToHrsMins(props.movie.runtime)}
                   </p>
                   <button className="close" onClick={props.onClose}>&times;</button>
-                  {/* <button className="close" onClick={props.onClose}>&times;</button> */}
                 </div>
               </div>
             );
