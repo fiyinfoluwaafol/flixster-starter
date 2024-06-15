@@ -13,10 +13,6 @@
 }
 
 @media (max-width: 600px) {
-  .movie-card {
-    /* width: 100%; */
-  }
-
   .search-bar {
     flex-direction: column;
     gap: 10px;
@@ -25,10 +21,9 @@
   .search-bar form {
     flex-direction: column;
   }
-
 }
 
 #footer {
   text-align: right;
-  padding-right: 0.6 em;
+  padding-right: 1em;
 }
